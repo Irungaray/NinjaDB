@@ -1,7 +1,12 @@
 let {
-    PORT
+    PORT,
+    dbUser,
+    dbPassword,
+    dbName,
+    dbClUri,
 } = process.env
 
 export default {
-    PORT
+    PORT,
+    dbUri: `mongodb+srv://${dbUser}:${dbPassword}@${dbClUri}/${dbName}?retryWrites=true&w=majority`,
 }
