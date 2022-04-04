@@ -2,18 +2,16 @@
 import { Express, Request, Response } from "express"
 
 // Int modules
-import { createNinjaHandler } from "./controllers/ninja.controller"
+import { getNinjasHandler, createNinjaHandler } from "./controllers/ninja.controller"
 
 const routes = (app: Express) => {
     // Healthcheck
     app.get("/", (req: Request, res: Response) => {
-        res.sendStatus(200)
+        res.status(200).send("Everything alrighty.")
     })
 
     // Get list of ninjas
-    app.get('/ninjas', (req: Request, res: Response) => {
-        res.send("")
-    })
+    app.get('/ninjas', getNinjasHandler)
 
     // Add ninja
     app.post('/ninjas', createNinjaHandler)

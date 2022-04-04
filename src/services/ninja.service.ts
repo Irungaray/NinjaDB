@@ -1,9 +1,15 @@
 import { NinjaDocument, NinjaModel } from "../models/ninja.model"
 
+const getNinjas = async () => {
+    const ninjas = await NinjaModel.find({})
+
+    return ninjas
+}
+
 const createNinja = async (payload: NinjaDocument) => {
     const ninja = await NinjaModel.create(payload)
 
-    return ninja.toJSON()
+    return ninja
 }
 
-export { createNinja }
+export { getNinjas, createNinja }
