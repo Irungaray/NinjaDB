@@ -18,7 +18,7 @@ const createNinjaHandler = async (req: Request, res: Response) => {
 
     logger.warn(`Creating ninja ${ninja.name}`)
 
-    return res.send("Ninja created")
+    return res.send(`Ninja ${ninja.name} created`)
 }
 
 const updateNinjaHandler = async (req: Request, res: Response) => {
@@ -26,15 +26,15 @@ const updateNinjaHandler = async (req: Request, res: Response) => {
 
     logger.warn(`Updating ninja ${ninja?.name}`)
 
-    return res.send("Ninja updated")
+    return res.send(`Ninja ${ninja?.name} updated`)
 }
 
 const deleteNinjaHandler = async (req: Request, res: Response) => {
-    const ninja = await deleteNinja()
+    const ninja = await deleteNinja(req.params.id)
 
     logger.warn(`Deleting ninja ${ninja?.name}`)
 
-    return res.send("Ninja deleted.")
+    return res.send(`Ninja ${ninja?.name} deleted`)
 }
 
 export { getNinjasHandler, createNinjaHandler, updateNinjaHandler, deleteNinjaHandler }
