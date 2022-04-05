@@ -1,6 +1,6 @@
 // Ext modules
 import { Request, Response } from "express"
-import { getNinjas, createNinja } from "../services/ninja.service"
+import { getNinjas, createNinja, updateNinja, deleteNinja } from "../services/ninja.service"
 
 // Int modules
 import { logger } from "../utils/logger"
@@ -21,4 +21,20 @@ const createNinjaHandler = async (req: Request, res: Response) => {
     return res.send("Ninja created")
 }
 
-export { getNinjasHandler, createNinjaHandler }
+const updateNinjaHandler = async (req: Request, res: Response) => {
+    const ninja = await updateNinja(req.params.id, req.body)
+
+    logger.warn(`Updating ninja ${ninja?.name}`)
+
+    return res.send("Ninja updated")
+}
+
+const deleteNinjaHandler = async (req: Request, res: Response) => {
+    const ninja = await deleteNinja()
+
+    logger.warn(`Deleting ninja ${ninja?.name}`)
+
+    return res.send("Ninja deleted.")
+}
+
+export { getNinjasHandler, createNinjaHandler, updateNinjaHandler, deleteNinjaHandler }

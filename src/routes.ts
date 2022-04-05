@@ -2,7 +2,7 @@
 import { Express, Request, Response } from "express"
 
 // Int modules
-import { getNinjasHandler, createNinjaHandler } from "./controllers/ninja.controller"
+import { getNinjasHandler, createNinjaHandler, updateNinjaHandler } from "./controllers/ninja.controller"
 
 const routes = (app: Express) => {
     // Healthcheck
@@ -17,9 +17,7 @@ const routes = (app: Express) => {
     app.post('/ninjas', createNinjaHandler)
 
     // Update ninja
-    app.put('/ninjas/:id', (req: Request, res: Response) => {
-        res.send("")
-    })
+    app.put('/ninjas/:id', updateNinjaHandler)
 
     // Delete ninja
     app.delete('/ninjas/:id', (req: Request, res: Response) => {
